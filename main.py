@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""polymarket-nvidia-ceo-forecast-01 entry: quantile forecast of each market's Yes price.
+"""polymarket-nvidia-ceo-forecast-01 entry: each market's Yes price 4 hours ahead, in five
+quantiles a minute, with the bands read off that market's own conditioned history.
 
 Model. A price is a bounded probability, so the honest state space is the logit of the price:
 over the case's 72 hours of minutes, measure how far the logit moves in h minutes for a spread
@@ -20,6 +21,7 @@ EPS = 1e-6
 
 # --- tuned constants (searched against the practice + held-out cases) ---
 # searched against the practice cases and held-out cuts of the same history
+# Constants searched against the practice cases and held-out cuts of the same history.
 LAM = 0.50          # scale on the empirical quantile offsets
 TAIL = 1.00         # extra scale applied to the outer levels (0.05 / 0.95) only
 DRIFT = 0.0         # logit drift per hour
